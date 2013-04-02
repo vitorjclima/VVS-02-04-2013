@@ -6,6 +6,7 @@ import java.util.Arrays;
  *
  * @author vitor
  */
+
 public class Util {
 
     public static boolean iguais(int[] v1, int[] v2) {
