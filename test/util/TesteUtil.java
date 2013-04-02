@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package util;
 
 import org.junit.After;
@@ -10,6 +6,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.omg.CORBA.UnknownUserException;
 
 /**
  *
@@ -111,4 +108,52 @@ public class TesteUtil {
          
          assertEquals(false, Util.iguais(x,y));
      }
+     
+     @Test
+     public void testePrimeiraOcorrenciaNoVetorDeUmElementoDiferenteDaEntrada() throws Exception{
+         int v[] = {1,1,1,2};
+         
+         assertEquals(3, Util.primeiroIndiceValorDiferente(v, 1));
+         assertEquals(0, Util.primeiroIndiceValorDiferente(v, 0));;
+     }
+     
+   
+    @Test(expected = Exception.class)
+     public void testePrimeiraOcorrenciaNoVetorDeUmElementoIgualDaEntrada() throws Exception{
+         int v[] = {1,1,1};
+         
+         assertEquals(null, Util.primeiroIndiceValorDiferente(v, 1));
+     }
+     
+    @Test
+    public void testeFatorial() throws Exception{
+        
+        assertEquals(1, Util.fatorial(0));
+        assertEquals(1, Util.fatorial(1));
+        assertEquals(120, Util.fatorial(5));    
+        
+    }
+    
+    @Test(expected = Exception.class)
+    public void testeFatorialNegativo() throws Exception{
+        
+        assertEquals(1, Util.fatorial(-1));
+        assertEquals(1, Util.fatorial(-1000));
+        
+    }
+    
+    @Test
+    public void testeFatorialNumeroMaximo() throws Exception{
+        
+        assertEquals(2432902008176640000l, Util.fatorial(20));
+        
+    }
+    
+    @Test(expected = Exception.class)
+    public void testeFatorialAcimoDoLimite() throws Exception{
+        
+        assertEquals(0, Util.fatorial(21));
+        
+    }
+     
 }
